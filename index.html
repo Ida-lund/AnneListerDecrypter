@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anne Lister Decrypter">
+    <title>Anne Lister Decrypter</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <section class="header">
+        <div class="text-box">
+
+            <h1>ANNE LISTER</h1>
+
+            <p>
+                This first modern lesbian, was a wealthy, independent
+                landowner who was renowned in her time for dressing
+                always in black, without bothering to indulge in the
+                feminine frills like the others of her sex. Her lesbian
+                lifestyle, however, was one of the best kept secrets
+                of her time.
+            </p>
+
+            <a href="https://www.annelister.co.uk" target="_blank">
+                Read more about her here
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- DECRYPTER -->
+
+    <section class="body">
+
+        <h2>Anne Lister's Code</h2>
+
+        <p>
+            Write or paste Anne Lister's code below.
+            You can also use the symbols to help you type.
+        </p>
+
+
+        <!-- SYMBOL KEYBOARD -->
+
+        <div class="centered">
+
+            <button type="button" onclick="addText('‖')">‖</button>
+            <button type="button" onclick="addText('χ')">χ</button>
+            <button type="button" onclick="addText('Ӿ')">Ӿ</button>
+            <button type="button" onclick="addText('€')">€</button>
+            <button type="button" onclick="addText('√')">√</button>
+            <button type="button" onclick="addText('Λ')">Λ</button>
+            <button type="button" onclick="addText('∇')">∇</button>
+            <button type="button" onclick="addText('∈')">∈</button>
+            <button type="button" onclick="addText('∋')">∋</button>
+            <button type="button" onclick="addText('φ')">φ</button>
+            <button type="button" onclick="addText('⊥')">⊥</button>
+            <button type="button" onclick="addText('≠')">≠</button>
+            <button type="button" onclick="addText('≁')">≁</button>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <form name="f" onsubmit="return false;">
+
+            <label for="original">Decrypt:</label>
+
+            <textarea
+                id="original"
+                name="original"
+                rows="8"
+                placeholder="Write or paste the coded text here..."
+                oninput="dcode()"
+                spellcheck="false"
+            ></textarea>
+
+
+            <!-- TRANSLATION -->
+
+            <label for="dcoded">Translated:</label>
+
+            <textarea
+                id="dcoded"
+                name="dcoded"
+                rows="8"
+                placeholder="Your translation will appear here..."
+                readonly
+            ></textarea>
+
+        </form>
+
+
+        <!-- GUIDE -->
+
+        <div class="guide">
+
+            <a href="http://xldev.co.uk/listeria/Guidelines.aspx" target="_blank">
+                Need a little guide? Don't you worry!
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- OTHER LINKS -->
+
+    <section class="low-btn">
+
+        <a href="quiz.html">Wanna take my quiz?</a>
+
+        <a href="memory.html">Play some?</a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="home__footer">
+
+        <span>Anne Lister (1791 - 1840)</span>
+        <span>|</span>
+        <span>@Ida-main 2022</span>
+
+    </footer>
+
+
+    <!-- DECRYPTION JAVASCRIPT -->
+
+    <script>
+
+        // Convert alternative characters into Anne Lister's symbols
+
+        const rplaceTable = {
+
+            '|': '\u2016',
+            'X': '\u03C7',
+            '*': '\u04FE',
+            'C': '\u20AC',
+            'L': '\u221A',
+            'A': '\u039B',
+            'V': '\u2207',
+            '{': '\u2208',
+            '}': '\u220B',
+            'q': '\u03C6',
+            'I': '\u22A5',
+            '#': '\u2260',
+            '&': '\u2241',
+            'O': '\u25A1'
+
+        };
+
+
+        // Translate Anne Lister's symbols into English
+
+        const dcodeTable = {
+
+            '2': 'a',
+            '(': 'b',
+            ')': 'c',
+            'o': 'd',
+            '3': 'e',
+            'v': 'f',
+            'n': 'g',
+            '@': 'h',
+            '4': 'i',
+            '1': 'k',
+            'd': 'l',
+            '-': 'm',
+            '\\': 'n',
+            '5': 'o',
+            '+': 'p',
+            '\u2016': 'q',
+            'p': 'r',
+            '=': 's',
+            '~': 't',
+            '6': 'u',
+            'g': 'v',
+            '8': 'w',
+            'w': 'x',
+            '7': 'y',
+            '9': 'z',
+
+            '\u03C7': 'mr',
+            '\u04FE': 'mrs',
+            '\u20AC': 'miss',
+            '\u221A': 'th',
+            '\u039B': 'sh',
+            '\u2207': 'ch',
+            'x': 'and',
+            '\u2208': 'bb',
+            '\u220B': 'cc',
+            ';': 'ee',
+            '\u03C6': 'ff',
+            ':': 'll',
+            '\u22A5': 'nn',
+            '!': 'oo',
+            '\u2260': 'pp',
+            'P': 'rr',
+            '?': 'ss',
+            '\u2241': 'tt'
+
+        };
+
+
+        // Normalize the input
+
+        function rplaceString(text) {
+
+            return Array.from(text).map(char => {
+
+                return rplaceTable[char] || char;
+
+            }).join('');
+
+        }
+
+
+        // Decrypt the text
+
+        function dcodeString(text) {
+
+            return Array.from(text).map(char => {
+
+                return dcodeTable[char] || char;
+
+            }).join('');
+
+        }
+
+
+        // Update translation automatically
+
+        function dcode() {
+
+            const original = document.getElementById('original').value;
+
+            const normalized = rplaceString(original);
+
+            const translated = dcodeString(normalized);
+
+            document.getElementById('dcoded').value = translated;
+
+        }
+
+
+        // Insert symbols using the symbol keyboard
+
+        function addText(symbol) {
+
+            const input = document.getElementById('original');
+
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+
+            input.setRangeText(symbol, start, end, 'end');
+
+            input.focus();
+
+            dcode();
+
+        }
+
+    </script>
+
+</body>
+</html>
