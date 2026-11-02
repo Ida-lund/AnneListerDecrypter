@@ -1,66 +1,472 @@
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Anne Listers companion</title>
-	<!-- ANIMATE CSS
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-     -->
-	<!-- FONTAWESOME -->
-	<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- Optional theme -->
-	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
-	<!-- GOOGLE FONT -->
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<!-- CUSTOM -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<!-- BODY -->
-<body>
-    <section class="header">
-        <div class="text-box">
-            <h1>Companion Quiz</h1>
-            <P>find out which of Anne's lover YOU are? <br>
-            Did you get the one you hoped? </P>
-                <a href="index.html">Back to the decrypter!</a>
-        </div>
-      </section>
 
-	<div class="container text-center">
-		<h1></h1>
-	</div>
-	<div class="container text-center">
-		<ul id="quiz" class="list-group">
+/* =====================================
+   GENERAL
+===================================== */
 
-		</ul>
-	</div>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-	<div class="container text-center hide results">
-		<img src="anne.JPG" class="results col-md-4 col-sm-4 col-xs-4">
-		<img src="anne.PNG" class="results col-md-4 col-sm-4 col-xs-4">
-		<img src="mariana.PNG" class="results col-md-4 col-sm-4 col-xs-4">
-	</div>
+body {
+    font-family: 'Lato', Georgia, sans-serif;
+    color: #33332f;
+    background-color: #fdfcf8;
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+.hide {
+    display: none !important;
+}
+
+a {
+    display: inline-block;
+    color: #222;
+    background: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+a:hover {
+    background-color: rgb(231, 198, 66);
+    letter-spacing: 4px;
+}
 
 
-	<div class="container text-center results hide">
-		<p id="results"></p>
-	</div>
+/* =====================================
+   HEADER
+===================================== */
 
-	<div class="container text-center bottom">
-		<button id="submit-btn" class="btn btn-primary btn-lg">Submit</button>
+.header {
+    width: 100%;
+    min-height: 75vh;
+    padding: 50px 10%;
 
-		<button id="retake-btn" class="hide btn btn-primary btn-lg">Retake Quiz</button>
-	</div>
-	<!-- SCRIPTS -->
+    display: flex;
+    align-items: flex-start;
 
-	<!-- JQUERY -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<!-- BOOTSTRAP -->
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- CUSTOM -->
-	<script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+    background-image: url("../hall.JPG");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+.text-box {
+    max-width: 700px;
+    color: #6d6e68;
+}
+
+.text-box h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: #111;
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: 5px;
+}
+
+.text-box p {
+    font-size: 1.1rem;
+    margin-top: 25px;
+    max-width: 600px;
+    text-align: left;
+}
+
+
+/* =====================================
+   QUIZ CONTAINER
+===================================== */
+
+.quiz-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 60px auto;
+}
+
+.introduction {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.introduction h2 {
+    font-family: Georgia, serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.introduction p {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.disclaimer {
+    font-size: 0.85rem !important;
+    color: #888;
+    font-style: italic;
+    margin-top: 25px;
+}
+
+
+/* =====================================
+   PROGRESS BAR
+===================================== */
+
+.quiz-progress {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 0.85rem;
+    color: #777;
+    text-align: center;
+}
+
+.progress-track {
+    height: 7px;
+    background: #e7e4dc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #a68c51;
+    transition: width 0.3s ease;
+}
+
+
+/* =====================================
+   QUESTIONS
+===================================== */
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.question-card {
+    background: #fff;
+    border: 1px solid #e5e1d7;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.035);
+}
+
+.question-number {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #a68c51;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.question-card h3 {
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: normal;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.answer-option {
+    position: relative;
+}
+
+.answer-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.answer-option label {
+    display: flex;
+    align-items: center;
+    min-height: 65px;
+    padding: 14px 18px;
+
+    border: 1px solid #dedbd2;
+    border-radius: 5px;
+
+    background: #faf9f6;
+
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-option label:hover {
+    border-color: #a68c51;
+    background: #f7f3e9;
+}
+
+.answer-option input:checked + label {
+    background: #eae1c9;
+    border: 2px solid #a68c51;
+    color: #29271f;
+    font-weight: bold;
+}
+
+.answer-option input:focus-visible + label {
+    outline: 3px solid #a68c51;
+    outline-offset: 3px;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.bottom {
+    margin: 45px auto 80px;
+    text-align: center;
+}
+
+.btn {
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 15px 225px 255px 15px / 15px 255px 225px 15px;
+
+    color: #41403e;
+
+    padding: 16px 30px;
+
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: rgb(231, 198, 66);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+}
+
+#error-message {
+    color: #a33;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* =====================================
+   RESULTS
+===================================== */
+
+.result-heading {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.eyebrow {
+    font-size: 0.8rem;
+    color: #a68c51;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.result-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.result-heading p {
+    color: #777;
+}
+
+.result-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 700px;
+    margin: 35px auto;
+}
+
+.result-gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.result-card {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 40px;
+
+    background: #fff;
+    border: 1px solid #e5e1d7;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.035);
+}
+
+.result-card p {
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+}
+
+.result-card h3 {
+    font-family: Georgia, serif;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.result-divider {
+    height: 1px;
+    background: #e5e1d7;
+    margin: 30px 0;
+}
+
+#result-ending {
+    font-style: italic;
+}
+
+.result-footnote {
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin: 30px auto;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.home__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 25px 10px;
+    margin-top: 50px;
+
+    background: white;
+
+    color: #777;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media screen and (max-width: 600px) {
+
+    .header {
+        min-height: 65vh;
+        padding: 35px 22px;
+        background-position: center;
+    }
+
+    .text-box h1 {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+
+    .text-box p {
+        font-size: 0.95rem;
+    }
+
+    .quiz-container {
+        width: 92%;
+        margin: 35px auto;
+    }
+
+    .introduction {
+        margin-bottom: 35px;
+    }
+
+    .introduction h2 {
+        font-size: 1.8rem;
+    }
+
+    .introduction p {
+        font-size: 0.95rem;
+    }
+
+    .question-card {
+        padding: 22px 16px;
+    }
+
+    .question-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .answers {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .answer-option label {
+        min-height: 55px;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+        font-size: 1rem;
+    }
+
+    .result-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+    }
+
+    .result-gallery img {
+        height: 145px;
+        border-width: 3px;
+    }
+
+    .result-card {
+        padding: 25px 20px;
+    }
+
+    .result-card p {
+        font-size: 0.95rem;
+    }
+
+    .result-heading h2 {
+        font-size: 2rem;
+    }
+
+    .home__footer {
+        font-size: 0.7rem;
+    }
+
+}
+
