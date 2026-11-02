@@ -53,13 +53,12 @@ a:hover {
     display: flex;
     align-items: flex-start;
 
-    background-image: url("../bed.PNG");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #6d6e68;
-
-    position: relative;
+   background-image: url("../hall.JPG");
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   color: #000000;
+   position: relative;
 }
 
 .text-box {
