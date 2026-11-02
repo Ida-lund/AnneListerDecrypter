@@ -1,3 +1,4 @@
+
 /* =================================
    GENERAL
 ================================= */
@@ -9,7 +10,7 @@
 }
 
 html {
-    background-image: url(street.PNG);
+    background-image: url(bg.png);
     background-position: center 950px;
     background-repeat: no-repeat;
     background-size: 100%;
