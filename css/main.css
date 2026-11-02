@@ -57,6 +57,7 @@ a:hover {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    color: #6d6e68;
 
     position: relative;
 }
