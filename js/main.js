@@ -240,7 +240,7 @@ const personalities = {
         subtitle: "The Formidable Original",
 
         description: `
-            <p>Oh dear. You are Anne Lister herself.</p>
+            <p>Oh dear. This is most Odd... You are Anne Lister herself!</p>
 
             <p>You are ambitious, fiercely independent, intellectual and exceptionally confident in your own abilities.</p>
 
